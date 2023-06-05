@@ -1,2 +1,2 @@
 # alx-higher_level_programming 
-this is about ptyhon
+this is about ptyhoN
