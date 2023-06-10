@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-
+#!/usr/bin/python3
 # no_c - removes all characters c and C from a string.
 # my_string: is the string passed
 
