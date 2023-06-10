@@ -4,9 +4,8 @@
 # my_string: is the string passed
 
 def no_c(my_string):
-    newString = ""
+    newString = []
     for x in my_string:
         if x != "c" and x != "C":
-            newString += x
-
-    return (newString)
+            newString.append(x)
+    return ("".join(newString))
