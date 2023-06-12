@@ -10,7 +10,7 @@ def new_in_list(my_list, idx, element):
     length = len(my_list)
     newList = my_list[:]
 
-    if idx < 0 or idx > length:
+    if idx < 0 or idx > length - 1:
         return (newList)
     else:
         newList[idx] = element
