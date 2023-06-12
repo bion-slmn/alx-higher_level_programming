@@ -11,54 +11,62 @@
 int is_palindrome(listint_t **head)
 {
 	/* Findd the length of linked list */
-	int length, m, i = 0;
-	listint_t *newLinked_list, *temp = *head;
+	int length, i = 0;
+	listint_t *rev, *temp = *head;
+
+	if (*head == NULL || (*head)->next == NULL)
+		return (1);
 
 	length = listLength(head);
 
-	newLinked_list = malloc(sizeof(listint_t));
-	newLinked_list->next = NULL;
-	/* create a reversed copy of original*/
-	while (i < length)
-	{
-		m = temp->n;
-		insert_begin(&newLinked_list, m);
+	for (; i < (length - 1) / 2; i++)
 		temp = temp->next;
-		i++;
-	}
+
+	if ((length % 2) == 0 && temp->n != temp->next->n)
+		return (0);
+	temp = temp->next->next;
+
+	/* create a reversed copy of original*/
+	rev = reverse(&temp);
 
 	temp = *head;
 	/* compare the values of original and reversed copy*/
-	while (i < length)
+	while (rev)
 	{
-		if (temp->n == newLinked_list->n)
+		if (temp->n == rev->n)
 		{
 			temp = temp->next;
-			newLinked_list = newLinked_list->next;
-			i++;
+			rev = rev->next;
 		}
 		else
 			return (0);
 	}
+	reverse(&rev);
+
 	return (1);
 }
 
 /**
- * insert_begin - inserts a node at the beginning.
+ * reverse - reverses a linked list
  * @head: is the beginning of the node provided.
- * @k:is the value to be inserted.
+ *
+ * Return: reveresed linked list
  */
-void insert_begin(listint_t **head, int k)
+listint_t *reverse(listint_t **head)
 {
-	listint_t *newNode = malloc(sizeof(listint_t));
+	listint_t *prev = NULL, *next, *node = *head;
 
-	if (!newNode)
-		return;
-	newNode->n = k;
-	newNode->next = NULL;
+	while (node)
+	{
+		next = node->next;
+		node->next = prev;
+		prev = node;
+		node = next;
+	}
 
-	newNode->next = *head;
-	*head = newNode;
+	*head = prev;
+
+	return (*head);
 }
 
 /**

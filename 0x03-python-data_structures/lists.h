@@ -21,6 +21,6 @@ void free_listint(listint_t *head);
 
 int is_palindrome(listint_t **head);
 int listLength(listint_t **head);
-void insert_begin(listint_t **head, int k);
+listint_t *reverse(listint_t **head);
 
 #endif /* LISTS_H */
