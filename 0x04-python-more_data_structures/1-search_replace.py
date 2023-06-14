@@ -6,10 +6,9 @@
 # replace is the new element
 
 def search_replace(my_list, search, replace):
-    newList = []
+    newList = my_list[:]
     for x in range(len(my_list)):
-        if my_list[x] == search:
-            my_list[x] = replace
-        newList.append(my_list[x])
+        if newList[x] == search:
+            newList[x] = replace
 
     return newList
