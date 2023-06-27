@@ -64,19 +64,29 @@ class Square:
     def my_print(self):
         ''' that prints in stdout the square with the character #'''
         if self.__size == 0:
-            print()
+            print("")
         else:
             for x in range(self.__position[1]):
-                print()
+                print("")
             for x in range(self.__size):
                 for q in range(self.__position[0]):
                     print(" ", end="")
                 for y in range(self.__size):
                     print("#", end="")
-                print()
+                print("")
 
     def __str__(self):
-        '''Printing a Square instance should have the
-        same behavior as my_print()'''
-        self.my_print()
+        ''' that prints in stdout the square with the character #'''
+        if self.__size == 0:
+            print("")
+        else:
+            for x in range(self.__position[1]):
+                print("")
+            for x in range(self.__size):
+                for q in range(self.__position[0]):
+                    print(" ", end="")
+                for y in range(self.__size):
+                    print("#", end="")
+                if x < self.__size - 1:
+                    print("")
         return ""
