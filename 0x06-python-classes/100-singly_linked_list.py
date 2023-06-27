@@ -65,9 +65,9 @@ class SinglyLinkedList:
             print()
         else:
             temp = self.__head
-            result = ""
-            while temp.next_node:
-                result += str(temp.data) + '\n'
+            result = []
+            while temp:
+                result.append(str(temp.data))
                 temp = temp.next_node
-            result += str(temp.data)
-        return result
+
+        return "\n".join(result)
