@@ -61,13 +61,10 @@ class SinglyLinkedList:
             temp.next_node = newNode
 
     def __str__(self):
-        if self.__head is None:
-            print()
-        else:
-            temp = self.__head
-            result = []
-            while temp:
-                result.append(str(temp.data))
-                temp = temp.next_node
+        temp = self.__head
+        result = []
+        while temp:
+            result.append(str(temp.data))
+            temp = temp.next_node
 
-        return "\n".join(result)
+        return ("\n".join(result))
