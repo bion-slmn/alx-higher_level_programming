@@ -12,8 +12,8 @@ class Square:
             size (:obj:`int`, optional): is the size of a square
             position(:obj:'tuple', optiona) : is position to start print
         '''
-        self.__size = size
-        self.__position = position
+        self.size = size
+        self.position = position
 
     @property
     def size(self):
@@ -38,7 +38,7 @@ class Square:
 
         Return:
             the positon value'''
-        return self_position
+        return self.__position
 
     @position.setter
     def position(self, value):
