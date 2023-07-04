@@ -1,0 +1,154 @@
+==============================
+How to use 101-lazy_matrix_mul.py
+==============================
+This module defines a matrix multiplication function ``matrix_mul(m_a, m_b)``.
+
+Usage
+=====
+``lazy_matrix_mul(...)`` returns a new matrix representing the multiplication of
+``m_a`` by ``m_b``.
+
+::
+	>>> mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+	>>> x = [[1, 2], [3, 4]]
+	>>> y = [[1, 1], [1, 1]]
+	>>> mul(x, y) # doctest: +NORMALIZE_WHITESPACE
+	array([[3, 3],
+           [7, 7]])
+
+Testing for integers
+::
+
+	>>> x = [[1.5, 2.5], [3, 4]]
+	>>> y = [[1, 1], [1, 1]]
+	>>> mul(x, y) # doctest: +NORMALIZE_WHITESPACE
+	array([[4., 4.],
+           [7., 7.]])
+
+Testing for floatss
+::
+
+	>>> x = ([1.5, 2.5], [3, 4])
+        >>> y = [[1, 1], [1, 1]]
+        >>> mul(x, y)
+	Traceback (most recent call last):
+	TypeError: m_a has to be a list
+
+Testing x as a tuple
+::
+
+        >>> x = [[1.5, 2.5], [3, 4]]
+        >>> y = ([1, 1], [1, 1])
+        >>> mul(x, y)
+        Traceback (most recent call last):
+        TypeError: m_b has to be a list
+
+Testing y as a tuple
+::
+
+        >>> x = [[1.5, 2.5], (3, 4)]
+        >>> y = [[1, 1], [1, 1]]
+        >>> mul(x, y)
+        Traceback (most recent call last):
+        TypeError: m_a has to be a list of lists
+
+Testing x with a list of tuple
+::
+
+	>>> mul(1, 2)
+	Traceback (most recent call last):
+        TypeError: m_a has to be a list
+
+Testing with just number
+::
+
+        >>> mul('boy', 2)
+        Traceback (most recent call last):
+        TypeError: m_a has to be a list
+
+Testing with just number
+::
+
+        >>> x = [[1.5, 2.5], [3, 4]]
+        >>> y = [[1, 1], (1, 1)]
+        >>> mul(x, y)
+        Traceback (most recent call last):
+        TypeError: m_b has to be a list of lists
+
+Testing y as a list of tuple
+::
+
+        >>> x = [[1.5, 2.5], []]
+        >>> y = [[1, 1], [1, 1]]
+        >>> mul(x, y)
+        Traceback (most recent call last):
+        ValueError: m_a cannot be empty
+
+Testing with an empty row in x
+::
+	>>> x = [[1.5, 2.5], [3, 4]]
+        >>> y = [[1, 1], []]
+        >>> mul(x, y)
+        Traceback (most recent call last):
+        ValueError: m_b cannot be empty
+
+Testing with an empty row in y
+::
+
+        >>> x = [[1.5, 2.5], ['d', 4]]
+        >>> y = [[1, 1], [1, 1]]
+        >>> mul(x, y)
+        Traceback (most recent call last):
+        TypeError: m_a must contain only integers or floats
+
+Testing with string in x
+::
+
+        >>> x = [[1.5, 2.5], [3, 4]]
+        >>> y = [[1, 1], [1, 'a']]
+        >>> mul(x, y)
+        Traceback (most recent call last):
+        TypeError: m_b must contain only integers or floats
+
+Testing with string in x
+::
+
+        >>> x = [[1.5, 2.5], [3, 4]]
+        >>> y = [[1, 1], [1, 1], [2, 2]]
+        >>> mul(x, y)
+        Traceback (most recent call last):  
+        ValueError: m_a and m_b cannot be multiplied
+
+Testing when the columns in x are not the same size as those in y
+::
+
+        >>> x = [[1.5, 2.5], [3, 4, 1]]
+        >>> y = [[1, 1], [1, 1], [2, 2]]
+        >>> mul(x, y)
+        Traceback (most recent call last):
+        TypeError: each row of m_a has to be of the same size
+
+::
+Testing if the rows in x are not of the same size
+
+        >>> x = [[1.5, 2.5], [3, 4]]
+        >>> y = [[1, 1], [1, 1], [2, 2, 3]]
+        >>> mul(x, y)
+        Traceback (most recent call last):
+        TypeError: each row of m_b has to be of the same size
+
+Testing if the rows in y are not of the same size
+::
+
+	>>> mul()
+	Traceback (most recent call last):
+	TypeError: lazy_matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+
+Testing when no argument is passed
+::
+
+	>>> mul([1, 2, 3])
+        Traceback (most recent call last):
+        TypeError: lazy_matrix_mul() missing 1 required positional argument: 'm_b'
+
+Testing for when one argument is passed

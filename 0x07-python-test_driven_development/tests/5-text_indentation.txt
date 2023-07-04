@@ -1,0 +1,40 @@
+===========================================
+How to use 5-text_indentation.py
+===========================================
+
+This modules prints a text with 2 new lines after each of these
+characters: ., ? and :
+
+Usage
+====
+``text-indention(..)`` This function prints the string with addition
+of two new line after .,? and :
+
+::
+	>>> text_ind = __import__("5-text_indentation").text_indentation
+	>>> text_ind('Bion. Solomon? Are u:')
+	Bion.
+	<BLANKLINE>
+	Solomon?
+	<BLANKLINE>
+	Are u:
+	<BLANKLINE>
+	<BLANKLINE>
+
+Testing with full stop, ? and :
+::
+	>>> text_ind(12.232)
+	Traceback (most recent call last):
+	TypeError: text must be a string
+
+Testing Non_string value with full stop
+::
+	>>> text_ind(None)
+	Traceback (most recent call last):
+	TypeError: text must be a string
+
+Testing with NOne as parameter
+::
+	>>> text_ind()
+	Traceback (most recent call last):
+	TypeError: text_indentation() missing 1 required positional argument: 'text'

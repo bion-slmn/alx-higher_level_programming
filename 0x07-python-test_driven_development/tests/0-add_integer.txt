@@ -1,0 +1,85 @@
+================================
+How to use 0-add_integer.py
+================================
+This module adds two integers together
+
+Usage
+=====
+
+```add_integer(...)`` add two numbers an returns the sum
+
+::
+checking with all integers
+
+>>> add =  __import__('0-add_integer').add_integer
+>>> add(2, 3)
+5
+
+::
+checking with floats 
+----------------------
+
+>>> add(2.0, 3)
+5
+
+>>> add(2.0, 3.0)
+5
+
+>>> add(3, 2.0)
+5
+
+::
+check for empty
+---------------
+
+>>> add(None)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+>>> add(2, None)
+Traceback (most recent call last):
+TypeError: b must be an integer
+
+::
+check when one value is given
+-----------------------------
+
+>>> add(2)
+100
+
+>>> add("boy")
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+::
+check when passed strings
+-------------------------
+>>> add("boy", 3)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+>>> add(2, "girl")
+Traceback (most recent call last):
+TypeError: b must be an integer
+
+>>> add("boy", "girl")
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+::
+check when passed iterabale
+---------------------------
+
+>>> add([2, 3])
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+>>> add(3, [34, 2])
+Traceback (most recent call last):
+TypeError: b must be an integer
+
+>>> add([2, 3, 1], [2, 2])
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+
