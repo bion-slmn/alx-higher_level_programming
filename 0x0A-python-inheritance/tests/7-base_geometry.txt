@@ -1,0 +1,60 @@
+=======================================
+How to use 7-base_geometry.py
+=======================================
+
+This module defines class BaseGeometry 
+
+This class has a function that validate the passed  as oan int
+
+check is the the class has been imported
+
+	>>> bm = __import__('7-base_geometry').BaseGeometry
+	>>> b = bm()
+	>>> type(b)
+	<class '7-base_geometry.BaseGeometry'>
+
+check if the area functio works
+
+	>>> b.area()
+	Traceback (most recent call last):
+	Exception: area() is not implemented
+
+check if the area is passed arguments
+	
+	>>> b.area(2, 2)
+	Traceback (most recent call last):
+	TypeError: area() takes 1 positional argument but 3 were given
+
+checheck if the validator works with int and string)
+
+	>>> print(b.integer_validator("john", 12))
+	None
+
+check when value is not an int
+	>>> print(b.integer_validator("john", "go"))
+	Traceback (most recent call last):
+	TypeError: john must be an integer
+
+check if value is a negative
+	>>> print(b.integer_validator("john", 0))
+	Traceback (most recent call last):
+	ValueError: john must be greater than 0
+
+check when value is none:
+	>>> print(b.integer_validator("john", None))
+	Traceback (most recent call last):
+	TypeError: john must be an integer
+
+check when the value is less than 0
+	>>> print(b.integer_validator("john", -10))
+	Traceback (most recent call last):
+	ValueError: john must be greater than 0
+
+check when one argument is passed
+	>>> print(b.integer_validator("john"))
+	Traceback (most recent call last):
+	TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+check iif name is a non string
+	>>> print(b.integer_validator(12, 12))
+	None
