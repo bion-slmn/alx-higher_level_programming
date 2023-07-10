@@ -15,6 +15,11 @@ Check if MyList is a a subclasss of list
 	>>> issubclass(MyList, list)
 	True
 
+check they type 
+	>>> my_list = MyList()
+	>>> type(my_list)
+	<class '1-my_list.MyList'>
+
 check if it prints sorted list
 	>>> m = MyList([5, 2, 4, 1, 3])
 	>>> m.print_sorted()
@@ -41,3 +46,17 @@ check if you pass empty list
 	>>> m.print_sorted()
 	[]
 
+check is you pass None
+	>>> m = MyList(None)
+	Traceback (most recent call last):
+	TypeError: 'NoneType' object is not iterable
+
+check if you pass on interger in the list
+	>>> m = MyList([5])
+	>>> m.print_sorted()
+	[5]
+
+checking if you pass more than one list
+	>>> m = MyList([1, 2], [3, 4])
+	Traceback (most recent call last):
+	TypeError: list expected at most 1 argument, got 2
