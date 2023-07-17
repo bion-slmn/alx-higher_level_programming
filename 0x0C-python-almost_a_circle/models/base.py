@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 '''This module creates a class called Base'''
 import json
+import csv
 import os.path
 
 
@@ -72,3 +73,44 @@ class Base:
                 list_obj = [cls.create(**obj) for obj in new_list_dict]
 
             return list_obj
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        ''' saving to csv file'''
+        filename = cls.__name__ + '.csv'
+
+        if filename == 'Rectangle.csv':
+            header = ['id', 'width', 'height', 'x', 'y']
+        else:
+            header = ['id', 'size', 'x', 'y']
+
+        if list_objs is None:
+            list_dict = []
+        else:
+            list_dict = [obj.to_dictionary() for obj in list_objs]
+
+        with open(filename, 'w', encoding='utf-8') as f:
+            if list_objs is None:
+                f.write('[]')
+                return
+            writer = csv.DictWriter(f, fieldnames=header)
+            writer.writerows(list_dict)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        '''loading from csv file'''
+        filename = cls.__name__ + '.csv'
+        if not os.path.exists(filename):
+            return []
+
+        with open(filename, encoding='utf-8') as f:
+            if filename == 'Rectangle.csv':
+                header = ['id', 'width', 'height', 'x', 'y']
+            else:
+                header = ['id', 'size', 'x', 'y']
+
+            c_file = csv.DictReader(f, fieldnames=header)
+            content = [dict([k, int(v)] for k, v in d.items()) for d in c_file]
+            list_obj = [cls.create(**obj) for obj in content]
+
+        return list_obj

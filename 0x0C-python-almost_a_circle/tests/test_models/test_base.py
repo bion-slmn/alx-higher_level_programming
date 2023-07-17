@@ -185,3 +185,65 @@ class Testload_from_file(unittest.TestCase):
         ''' test when nothing is passed '''
         with self.assertRaises(TypeError):
             output = Square.load_from_file(None)
+
+
+class Testsave_to_file_csv(unittest.TestCase):
+    '''test the save_to_file_csv method '''
+    def test_if_create_file(self):
+        '''test is it creates a file and not empty'''
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        list_rectangles_input = [r1, r2]
+        Rectangle.save_to_file_csv(list_rectangles_input)
+        self.assertTrue(exists("Rectangle.csv"))
+        self.assertNotEqual(os.stat('Rectangle.csv').st_size, 0)
+
+    def test_none(self):
+        Rectangle.save_to_file_csv(None)
+        self.assertTrue(exists("Rectangle.csv"))
+        self.assertNotEqual(os.stat('Rectangle.csv').st_size, 0)
+
+    def test_read_file(self):
+        Rectangle.save_to_file_csv(None)
+        '''read the json file'''
+        with open("Rectangle.csv", "r") as mfile:
+            self.assertEqual('[]', mfile.read())
+
+        r2 = Rectangle(2, 4, 0, 0, 5)
+        Rectangle.save_to_file_csv([r2])
+        with open("Rectangle.csv", "r") as mfile:
+            self.assertEqual(
+                    '5,2,4,0,0\n',
+                    mfile.read())
+
+    def test_non_iterables(self):
+        with self.assertRaises(TypeError):
+            Rectangle.save_to_file_csv(1)
+
+    def test_many_args(self):
+        with self.assertRaises(TypeError):
+            Rectangle.save_to_file_csv(1, 6, 2, 2)
+
+
+class Testload_from_file_csv(unittest.TestCase):
+    '''test load_from_file_csv method'''
+    def test_with_file(self):
+        ''' test when the file exits'''
+        s1 = Square(5, 0, 0, 5)
+        list_squares_input = [s1]
+
+        Square.save_to_file_csv(list_squares_input)
+
+        output = Square.load_from_file_csv()
+        for square in output:
+            self.assertEqual(str(square), '[Square] (5) 0/0 - 5')
+
+    def test_arg_passed(self):
+        ''' test when passed arguments in function '''
+        with self.assertRaises(TypeError):
+            output = Square.load_from_file_csv(1, 2)
+
+    def test_with_None(self):
+        ''' test when nothing is passed '''
+        with self.assertRaises(TypeError):
+            output = Square.load_from_file_csv(None)
