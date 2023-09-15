@@ -20,6 +20,6 @@ class State(Base):
     '''This defines a class state that links to a table
     in the database'''
     __tablename__ = 'states'
-    id = Column(Integer(11), primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(128), nullable=False)
     # cities = relationship('City', back_populates='state')
