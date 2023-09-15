@@ -9,8 +9,8 @@ from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy import create_engine
 import sys
 
-engine = create_engine("mysql+mysqldb://sys.argv[1] \
-                      :sys.argv[2]@localhost/sys.argv[3]")
+#engine = create_engine("mysql+mysqldb://sys.argv[1] \
+#                      :sys.argv[2]@localhost/sys.argv[3]")
 
 
 class City(Base):
@@ -22,3 +22,5 @@ class City(Base):
     state_id = Column(Integer, ForeignKey('states.id'), nullable=False)
 
     state = relationship('State', back_populates='cities')
+
+State.cities = relationship('City', back_populates='state')
