@@ -9,8 +9,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import relationship
 import sys
 
-engine = create_engine("mysql+mysqldb://sys.argv[1] \
-                      :sys.argv[2]@localhost/sys.argv[3]")
+
 Base = declarative_base()
 
 
@@ -18,6 +17,6 @@ class State(Base):
     '''This defines a class state that links to a table
     in the database'''
     __tablename__ = 'states'
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(Integer(11), primary_key=True, autoincrement=True)
     name = Column(String(128), nullable=False)
-    cities = relationship('City', back_populates='state')
+    # cities = relationship('City', back_populates='state')
