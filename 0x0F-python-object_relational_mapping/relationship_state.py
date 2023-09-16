@@ -2,18 +2,11 @@
 '''This module has class definition of a State and
 an instance Base = declarative_base()'''
 
-from model_city import City
-from sqlalchemy.ext.declarative import declarative_base
+from relationship_city import City, Base
 from sqlalchemy import Column, Integer, String
 from sqlalchemy import create_engine
 from sqlalchemy.orm import relationship
 import sys
-
-
-Base = declarative_base()
-
-# db = MySQLdb.connect(host='localhost', port=3306, user=sys.argv[1],
-#                     password=sys.argv[2], db=sys.argv[3])
 
 
 class State(Base):
@@ -22,7 +15,7 @@ class State(Base):
     __tablename__ = 'states'
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(128), nullable=False)
-    cities = relationship('City', back_ref='state', cascade='all, delete')
+    cities = relationship('City', backref='state', cascade='all, delete')
 
 
-#City.state = relationship('State', back_populates='cities')
+# City.state = relationship('State', back_populates='cities')
