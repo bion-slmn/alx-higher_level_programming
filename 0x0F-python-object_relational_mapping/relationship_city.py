@@ -3,11 +3,14 @@
 an instance Base = declarative_base()'''
 
 
-from model_state import Base, State
+from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy import create_engine
 import sys
+
+
+Base = declarative_base()
 
 
 class City(Base):
