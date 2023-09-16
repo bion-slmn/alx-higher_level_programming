@@ -2,7 +2,7 @@
 '''This module has class definition of a State and
 an instance Base = declarative_base()'''
 
-
+from model_city import City
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String
 from sqlalchemy import create_engine
