@@ -8,10 +8,12 @@ import sys
 if __name__ == "__main__":
     url = f' https://api.github.com/repos/{sys.argv[1]}/{sys.argv[2]}/commits'
     r = requests.get(url)
+    com = r.json()
 
-    for count, r_dic in enumerate(r.json()):
-        committer = r_dic.get('commit').get('author').get('name')
-        sha = r_dic.get('sha')
-        print(f"{sha}: {committer}")
-        if count == 9:
-            break
+    try:
+        for i in range(10):
+            committer = com[i].get("commit").get("author").get("name")
+            sha = com[i].get("sha")
+            print("{}: {}".format(sha, committer))
+    except IndexError:
+        pass
