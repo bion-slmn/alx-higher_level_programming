@@ -8,9 +8,9 @@ import sys
 if __name__ == "__main__":
     owner = sys.argv[1]
     repo = sys.argv[2]
-    limit = 10
-    url = f'https://api.github.com/repos/{repo}/{owner}/commits?per_page={limit}'
-    resp = requests.get(url)
+    para = {'per_page': 10}
+    url = f'https://api.github.com/repos/{repo}/{owner}/commits?'
+    resp = requests.get(url, params=para)
 
     if resp.status_code == 200:
         commit = resp.json()
