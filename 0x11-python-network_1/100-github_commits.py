@@ -7,13 +7,12 @@ import sys
 
 if __name__ == "__main__":
     url = f' https://api.github.com/repos/{sys.argv[1]}/{sys.argv[2]}/commits'
-    r = requests.get(url)
-    com = r.json()
+    resp = requests.get(url)
 
-    for i in range(10):
-        try:
-            committer = com[i].get("commit").get("author").get("name")
-            sha = com[i].get("sha")
+    if resp.status_code == 200:
+        commit = resp.json()
+
+        for com in commit[:10]:
+            committer = com.get("commit").get("author").get("name")
+            sha = com.get("sha")
             print("{}: {}".format(sha, committer))
-        except IndexError:
-            break
