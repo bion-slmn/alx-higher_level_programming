@@ -8,16 +8,15 @@ import sys
 if __name__ == "__main__":
     owner = sys.argv[1]
     repo = sys.argv[2]
-    para = {'per_page': 10}
     url = f'https://api.github.com/repos/{repo}/{owner}/commits'
-    resp = requests.get(url, params=para)
+    resp = requests.get(url)
 
     # print(resp.url, '\n')
 
     if resp.status_code == 200:
         commit = resp.json()
 
-        for com in commit:
+        for com in commit[:10]:
             committer = com.get("commit").get("author").get("name")
             sha = com.get("sha")
             print("{}: {}".format(sha, committer))
