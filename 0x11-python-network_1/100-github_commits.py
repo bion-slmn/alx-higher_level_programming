@@ -12,7 +12,7 @@ if __name__ == "__main__":
     url = f'https://api.github.com/repos/{repo}/{owner}/commits'
     resp = requests.get(url, params=para)
 
-    print(resp.url, '\n')
+    # print(resp.url, '\n')
 
     if resp.status_code == 200:
         commit = resp.json()
