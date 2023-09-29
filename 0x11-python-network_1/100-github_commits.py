@@ -12,6 +12,7 @@ if __name__ == "__main__":
 
     for count, r_dic in enumerate(r.json()):
         committer = r_dic.get('commit').get('author').get('name')
-        print(f"{r_dic.get('sha')}: {committer}")
+        sha = r_dic.get('sha')
+        print(f"{sha}: {committer}")
         if count == 9:
             break
