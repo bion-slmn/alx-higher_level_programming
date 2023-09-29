@@ -10,10 +10,10 @@ if __name__ == "__main__":
     r = requests.get(url)
     com = r.json()
 
-    try:
-        for i in range(10):
+    for i in range(10):
+        try:
             committer = com[i].get("commit").get("author").get("name")
             sha = com[i].get("sha")
             print("{}: {}".format(sha, committer))
-    except IndexError:
-        pass
+        except IndexError:
+            break
