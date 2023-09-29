@@ -7,9 +7,8 @@ import sys
 
 
 if __name__ == "__main__":
-    value = {"Accept": "application/vnd.github+json"}
     url = f' https://api.github.com/repos/{sys.argv[1]}/{sys.argv[2]}/commits'
-    r = requests.get(url, headers=value)
+    r = requests.get(url)
 
     for count, r_dic in enumerate(r.json()):
         committer = r_dic.get('commit').get('author').get('name')
