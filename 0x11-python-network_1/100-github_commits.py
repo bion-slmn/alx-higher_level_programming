@@ -12,7 +12,7 @@ if __name__ == "__main__":
     r = requests.get(url, headers=value)
 
     for count, r_dic in enumerate(r.json()):
-        print(f"{r_dic.get('sha')}: {r_dic.get('commit')
-                                     .get('author').get('name')}")
+        committer = r_dic.get('commit').get('author').get('name')
+        print(f"{r_dic.get('sha')}: {committer}")
         if count == 9:
             break
